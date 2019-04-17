@@ -1,3 +1,6 @@
+//CURRENTLY: Has buttons, table, title, window
+//TODO: Add + Delete Behavior
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -17,9 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
-
 import Buttons.ButtonListener;
-
 import javax.swing.JFormattedTextField;
 import javax.swing.DropMode;
 import javax.swing.JTextPane;
