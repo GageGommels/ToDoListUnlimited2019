@@ -126,9 +126,13 @@ public class ToDoListUnlimited {
 		table.setBounds(20, 158, 638, 251);
 		frame.getContentPane().add(table);
 		
-		ButtonListener listener = new ButtonListener();
-		btnAddItem.addActionListener(listener);
-		
+		/*
+		* Tried messing with this, gave me errors for some reason.
+		* Once we get the button listener Gage and I can start working 
+		* on the sorting algorithm! Should be easy peasy.
+		*/
+		//ButtonListener listener = new ButtonListener();
+		//btnAddItem.addActionListener(listener);
 		//JScrollPane scrollPane = new JScrollPane(table);
 		//frame.getContentPane().add(scrollPane);
 	}
