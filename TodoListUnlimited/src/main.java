@@ -24,7 +24,10 @@ public class main {
 				System.out.println("Task was added!");
 				break;
 			case 2:
-				System.out.println(tList.get(0).toString());
+				for(int i = 0; i < tList.size(); i++) {
+					System.out.println(tList.get(0).toString());
+				}
+				
 				break;
 			case 3:
 				System.exit(0);
