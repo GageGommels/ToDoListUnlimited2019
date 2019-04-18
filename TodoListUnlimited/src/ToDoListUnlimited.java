@@ -30,6 +30,10 @@ import javax.swing.UIManager;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.DefaultCellEditor;
 
 public class ToDoListUnlimited {
 
@@ -91,6 +95,11 @@ public class ToDoListUnlimited {
 		comboBox.setBounds(414, 89, 126, 27);
 		frame.getContentPane().add(comboBox);
 		
+		String[] actions = { "Pending","Ongoing","Done"};
+		
+		JComboBox<?> statusBox = new JComboBox<Object>(actions);
+		statusBox.setSelectedIndex(0);
+		
 		JButton btnPrint = new JButton("PRINT");
 		btnPrint.setBounds(552, 88, 117, 29);
 		frame.getContentPane().add(btnPrint);
@@ -114,7 +123,7 @@ public class ToDoListUnlimited {
 		///////////TABLE EXAMPLES////////////
 		String[] columnNames = {"Descrption", "Due Date", "Status", "Action"};
 		Object[][] info = new Object[50][4];
-		Object[] first = {"Coffee with Jan", "10/15/2019", "Done", "Stuff"};
+		Object[] first = {"Coffee with Jan", "10/15/2019","Done","Stuff"};
 		info[0] = first;
 		Object[] second = {"Coffee with Jan", "10/15/2019", "Done", "Stuff"};
 		info[1] = second;
@@ -125,7 +134,12 @@ public class ToDoListUnlimited {
 		table.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		table.setBounds(20, 158, 638, 251);
 		frame.getContentPane().add(table);
-		
+		TableColumn status = table.getColumnModel().getColumn(2);
+		status.setCellEditor(new DefaultCellEditor(statusBox));
+		DefaultTableCellRenderer renderer =
+                new DefaultTableCellRenderer();
+        renderer.setToolTipText("Click for combo box");
+        status.setCellRenderer(renderer);
 		/*
 		* Tried messing with this, gave me errors for some reason.
 		* Once we get the button listener Gage and I can start working 
