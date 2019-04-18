@@ -1,6 +1,3 @@
-//CURRENTLY: Has buttons, table, title, window
-//TODO: Add + Delete Behavior
-
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -20,7 +17,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
-import Buttons.ButtonListener;
+
+//import Buttons.ButtonListener;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.DropMode;
 import javax.swing.JTextPane;
@@ -35,6 +34,9 @@ public class ToDoListUnlimited {
 
 	private JFrame frame;
 	private JTable table;
+	public JButton btnAddItem;
+	Object[][] info = new Object[50][4];
+	private static int iteration = 3;
 
 	/**
 	 * Launch the application.
@@ -76,7 +78,7 @@ public class ToDoListUnlimited {
 		lblTodoListUnlimited.setToolTipText("Displays application name");
 		frame.getContentPane().add(lblTodoListUnlimited);
 		
-		JButton btnAddItem = new JButton("ADD ITEM");
+		btnAddItem = new JButton("ADD ITEM");
 		btnAddItem.setBounds(0, 88, 117, 29);
 		frame.getContentPane().add(btnAddItem);
 		
@@ -112,8 +114,10 @@ public class ToDoListUnlimited {
 		frame.getContentPane().add(lblAction);
 		
 		///////////TABLE EXAMPLES////////////
+		/*
+		 * Each slot will be different (String, Integer, Enum, Enum)
+		 */
 		String[] columnNames = {"Descrption", "Due Date", "Status", "Action"};
-		Object[][] info = new Object[50][4];
 		Object[] first = {"Coffee with Jan", "10/15/2019", "Done", "Stuff"};
 		info[0] = first;
 		Object[] second = {"Coffee with Jan", "10/15/2019", "Done", "Stuff"};
@@ -126,14 +130,50 @@ public class ToDoListUnlimited {
 		table.setBounds(20, 158, 638, 251);
 		frame.getContentPane().add(table);
 		
-		/*
-		* Tried messing with this, gave me errors for some reason.
-		* Once we get the button listener Gage and I can start working 
-		* on the sorting algorithm! Should be easy peasy.
-		*/
-		//ButtonListener listener = new ButtonListener();
-		//btnAddItem.addActionListener(listener);
 		//JScrollPane scrollPane = new JScrollPane(table);
 		//frame.getContentPane().add(scrollPane);
+		
+		class ButtonListener implements ActionListener {
+
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				
+				//NUMERICAL BUTTONS 0-9
+				if(event.getSource() == btnAddItem) { 
+					
+					Object[] third = {"Coffee with Jan", "10/15/2019", "Done", "Stuff"};
+					System.out.println("Print Button is pressed!");
+					info[iteration] = third;
+					iteration++;
+					frame.repaint();
+				}
+				
+				if(event.getSource() == btnPrint) { 
+					System.out.println("Print Button is pressed!");
+				}
+			}
+		}
+		
+		ButtonListener listener = new ButtonListener();
+		btnAddItem.addActionListener(listener);
+		btnPrint.addActionListener(listener);
 	}
 }
+
+/////////// STUFF WE NEED TO DO /////////////
+/*
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
